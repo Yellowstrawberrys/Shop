@@ -1,0 +1,21 @@
+name: Shop
+version: @version@
+main: shop.shop.Shop
+api-version: 1.16
+depend: [VaultAPI]
+authors: [ CommandBlock070, Yellowstrawberrys ]
+commands:
+  블럭상점:
+    description: 블럭상점임 ㅇㅇ
+  음식상점:
+    description: 음식상점임 ㅇㅇ
+  인첸트상점:
+    description: 인첸트 책 상점임 ㅇㅇ
+  농작물상점:
+    description: 농작물 상점 ㅇㅇ
+  광물상점:
+    description: 광물 상점임 ㅇㅇ
+  기타상점:
+    description: 기타 아이템 상점임 ㅇㅇ
+  상점테스트:
+    description: 상점플러그인 테스트 명령어임 ㅇㅇ
