@@ -217,7 +217,7 @@ public class EnchantShopGUI extends JavaPlugin {
         if (e.getClickedInventory().equals("인첸트상점")) {
             Player player = (Player) e.getWhoClicked();
             int slot = e.getRawSlot();
-            double money = Double.parseDouble(econ.format(econ.getBalance(player.getName())));
+            double money = (double) econ.getBalance(player);
             switch (e.getCurrentItem().getType()) {
                 case BARRIER:
                     player.closeInventory();
