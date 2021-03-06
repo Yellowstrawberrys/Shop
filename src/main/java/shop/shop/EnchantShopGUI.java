@@ -94,7 +94,23 @@ public class EnchantShopGUI extends JavaPlugin {
                 breath_meta.setDisplayName("호흡3 인첸트책");
                 ArrayList<String> breath_lore = new ArrayList<>();
                 breath_lore.add("40000원");
+                breath_meta.setLore(breath_lore);
 
+                ItemStack thorn = new ItemStack(Material.ENCHANTED_BOOK);
+                ItemMeta thorn_meta = thorn.getItemMeta();
+                thorn_meta.addEnchant(THORNS,3,true);
+                thorn_meta.setDisplayName("가시3 인첸트책");
+                ArrayList<String> thorn_lore = new ArrayList<>();
+                thorn_lore.add("40000원");
+                thorn_meta.setLore(thorn_lore);
+
+                ItemStack loot = new ItemStack(Material.ENCHANTED_BOOK);
+                ItemMeta loot_meta = loot.getItemMeta();
+                loot_meta.addEnchant(LOOT_BONUS_MOBS , 3 ,true);
+                loot_meta.setDisplayName("약탈3 인챈트책");
+                ArrayList<String> loot_lore = new ArrayList<>();
+                loot_lore.add("50000원");
+                loot_meta.setLore(loot_lore);
 
                 gui.setItem(0, nullslot);
                 gui.setItem(1, nullslot);
@@ -132,7 +148,8 @@ public class EnchantShopGUI extends JavaPlugin {
                 gui.setItem(12, pro4);
                 gui.setItem(13, fall);
                 gui.setItem(14 , water_friendly);
-                gui.setItem(15,breath);
+                gui.setItem(15, breath);
+                gui.setItem(16, thorn);
                 //갑옷 인첸트
                 gui.setItem(20, sharp5);
                 //칼 인첸트
@@ -174,6 +191,16 @@ public class EnchantShopGUI extends JavaPlugin {
         ItemMeta breath_meta = breath.getItemMeta();
         breath_meta.addEnchant(OXYGEN,3,true);
         breath_meta.setDisplayName("호흡3 인첸트책");
+
+        ItemStack thorn = new ItemStack(Material.ENCHANTED_BOOK);
+        ItemMeta thorn_meta = thorn.getItemMeta();
+        thorn_meta.addEnchant(THORNS,3,true);
+        thorn_meta.setDisplayName("가시3 인첸트책");
+
+        ItemStack loot = new ItemStack(Material.ENCHANTED_BOOK);
+        ItemMeta loot_meta = loot.getItemMeta();
+        loot_meta.addEnchant(LOOT_BONUS_MOBS , 3 ,true);
+        loot_meta.setDisplayName("약탈3 인챈트책");
 
 
 
@@ -228,7 +255,7 @@ public class EnchantShopGUI extends JavaPlugin {
                             player.sendMessage(ChatColor.RED + "이 아이템은 판매할수 없습니다!");
                         } else if (e.isLeftClick()) {
                             if (money >= 40000) {
-                                player.getInventory().addItem(water_friendly);
+                                player.getInventory().addItem(breath);
                                 EconomyResponse minus = econ.withdrawPlayer(player,40000);
                                 player.sendMessage("성공적으로 아이템을 구매하였습니다!");
                             } else if (money < 40000) {
@@ -236,13 +263,50 @@ public class EnchantShopGUI extends JavaPlugin {
                             }
                         }
 
-                    }
+                    } else if(slot == 16) {
+                        if (e.isRightClick()) {
+                            player.sendMessage(ChatColor.RED + "이 아이템은 판매할수 없습니다!");
+                        } else if (e.isLeftClick()) {
+                            if (money >= 40000) {
+                                player.getInventory().addItem(thorn);
+                                EconomyResponse minus = econ.withdrawPlayer(player, 40000);
+                                player.sendMessage("성공적으로 아이템을 구매하였습니다!");
+                            } else if (money < 40000) {
+                                player.sendMessage(ChatColor.RED + "잔액이 부족합니다");
 
+                            }
+
+                        }
+                    } else if(slot == 20) {
+                        if (e.isRightClick()) {
+                            player.sendMessage(ChatColor.RED + "이 아이템은 판매할수 없습니다!");
+                        } else if (e.isLeftClick()) {
+                            if (money >= 50000) {
+                                player.getInventory().addItem(sharp5);
+                                EconomyResponse minus = econ.withdrawPlayer(player, 50000);
+                                player.sendMessage("성공적으로 아이템을 구매하였습니다!");
+                            } else if (money < 50000) {
+                                player.sendMessage(ChatColor.RED + "잔액이 부족합니다");
+                            }
+
+                        }
+                    } else if(slot == 21) {
+                        if (e.isRightClick()) {
+                            player.sendMessage(ChatColor.RED + "이 아이템은 판매할수 없습니다!");
+                        } else if (e.isLeftClick()) {
+                            if (money >= 50000) {
+                                player.getInventory().addItem(loot);
+                                EconomyResponse minus = econ.withdrawPlayer(player, 50000);
+                                player.sendMessage("성공적으로 아이템을 구매하였습니다!");
+                            } else if (money < 50000) {
+                                player.sendMessage(ChatColor.RED + "잔액이 부족합니다");
+                            }
+                        }
                     }
 
                     e.setCancelled(true);
             }
         }
     }
-
+}
 
